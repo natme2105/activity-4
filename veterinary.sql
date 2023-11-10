@@ -1,41 +1,21 @@
 CREATE DATABASE veterinary;
 
-CREATE TABLE owners( 
-    ownerid INT PRIMARY KEY, 
-    ofirstname VARCHAR(50) NOT NULL,
-    phone VARCHAR(15) NOT NULL, 
-    phone VARCHAR(15) NOT NULL,
-    olastname VARCHAR(50) NOT NULL, 
-    address VARCHAR(15) NOT NULL, 
-    email VARCHAR(100) NOT NULL );
-
-CREATE TABLE animals(
-   animalid INT PRIMARY KEY,
-   name VARCHAR(50) NOT NULL,
-   species VARCHAR(50) NOT NULL,
-   breed VARCHAR(50) NOT NULL,
-   dateofbirth DATE,
-   gender VARCHAR(10) NOT NULL,
-   color VARCHAR(50) NOT NULL,
-   ownerid INT,foreign key (ownerid) references owners(ownerid));
-
-   CREATE TABLE Appointments (
-    appointid INT PRIMARY KEY,
-    animalid INT,
-    appointdate DATE,
-    reason VARCHAR(255),
-    FOREIGN KEY (animalid) REFERENCES Animals(animalid)
-CREATE TABLE Doctors (
-    doctorid INT PRIMARY KEY,
-    dfirstname VARCHAR(50),
-    dlastname VARCHAR(50),
-    speciality VARCHAR(100),
-    phone VARCHAR(15),
-    email VARCHAR(100)
-);
 CREATE TABLE invoices(
    invoiceid INT PRIMARY KEY,
    paymentdate TIME,
    totalamount NUMERIC(10,2) NOT NULL,
    appointid INT,
    foreign key (appointid) references appointments(appointid));
+
+   INSERT INTO invoices(invoiceid, appointid, totalamount, paymentdate)
+VALUES
+(1, 1, 50.00, '09:30:00'),
+(2, 2, 75.00, '14:15:00'),
+(3, 3, 100.00, '11:00:00'),
+(4, 4, 200.00, '13:45:00'),
+(5, 5, 80.00, '10:30:00'),
+(6, 6, 30.00, '15:00:00'),
+(7, 7, 75.00, '09:15:00'),
+(8, 8, 150.00, '16:30:00'),
+(9, 9, 60.00, '14:45:00'),
+(10, 10, 40.00, '11:30:00');
